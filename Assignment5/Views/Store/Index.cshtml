@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Assignment5.Models.StockItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Store</h2>
+
+<p>
+    @Html.ActionLink("Skapa ny", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Detaljer", "Details", new { id = item.ArticleNumber }) |           
+            @Html.ActionLink("Lägg till i kundvagn", "AddToCart", new { id = item.ArticleNumber }) |
+            @Html.ActionLink("Ta bort", "Delete", new { id=item.ArticleNumber })
+        </td>
+    </tr>
+}
+
+</table>
